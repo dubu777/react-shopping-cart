@@ -1,10 +1,15 @@
-import "./App.css";
+import { RecoilRoot } from "recoil";
+import ResetStyle from "./styles/ResetStyle";
+import GlobalStyle from "./styles/GlobalStyle";
+import Router from "./router/Router";
 
 function App() {
   return (
-    <>
-      <h1>react-shopping-cart</h1>
-    </>
+    <RecoilRoot>
+      <ResetStyle />
+      <GlobalStyle />
+      <Router />
+    </RecoilRoot>
   );
 }
 
