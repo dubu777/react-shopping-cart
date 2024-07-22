@@ -10,7 +10,8 @@ const useCartItenStore = create<CartItenStoreState>(set => ({
   cartItems: null,
   setCartItems: (cartItems: Items[] | null) => {
     set({cartItems})
-  }
+  },
+  
 }))
 
 

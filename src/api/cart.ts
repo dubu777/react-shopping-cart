@@ -4,7 +4,7 @@ import axiosInstance from "./axios";
 
 const getCartItems = async(): Promise<Items[] | null> => {
   const {data} = await axiosInstance.get('/cart-items');
-
+  
   return data;
 }
 

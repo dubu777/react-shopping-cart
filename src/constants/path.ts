@@ -1,6 +1,6 @@
 const mainPath = {
   HOME: '/',
-  CART: '/cart',
+  CART: '/cart-items',
   ORDER: '/order',
   COMPLETED: '/completed',
 } as const

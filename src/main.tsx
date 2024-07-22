@@ -11,7 +11,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const queryClient = new QueryClient();
 
 async function enableMocking() {
-  if (process.env.NODE_ENV !== 'development') {
+  // if (process.env.NODE_ENV !== 'development') {
+  if (true) {
     return
   }
 

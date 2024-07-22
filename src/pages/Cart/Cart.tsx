@@ -7,12 +7,13 @@ export default function Cart() {
   const {data} = useGetCartItems();
   const {cartItems, setCartItems} = useCartItenStore();
   useEffect(() => {
-    data && setCartItems(data)
-  },[data])
-  // const data = mockCoupons;
+    if (data) {
+      setCartItems(data);
+    }
+  }, [data]);
+
   console.log(cartItems, 'getcartitems');
 
-  
   return (
     <h1>장바구니</h1>
   )
