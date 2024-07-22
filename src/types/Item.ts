@@ -9,6 +9,7 @@ export interface Item {
 export interface Items {
   id: number;
   quantity: number;
+  isSelected: boolean;
   product: Item;
 }
 

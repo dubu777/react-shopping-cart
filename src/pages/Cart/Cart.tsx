@@ -1,19 +1,23 @@
 import { useEffect } from "react";
 import useGetCartItems from "../../api/queries/useGetCartItems"
 import useCartItenStore from "../../store/useCartItemStore";
+import { useGetCoupon } from "../../api/queries/useGetCoupon";
 // import { mockCoupons } from "../../mocks/data/coupons";
 
 export default function Cart() {
-  const {data} = useGetCartItems();
+  const {data: cart} = useGetCartItems();
   const {cartItems, setCartItems} = useCartItenStore();
+  const {data: coupon} = useGetCoupon();
+
   useEffect(() => {
-    if (data) {
-      setCartItems(data);
+    if (cart) {
+      setCartItems(cart);
     }
-  }, [data]);
+  }, [cart]);
 
-  console.log(cartItems, 'getcartitems');
-
+  console.log(cartItems, 'get-cart-items');
+  console.log(coupon, 'get-coupon-list');
+  
   return (
     <h1>장바구니</h1>
   )

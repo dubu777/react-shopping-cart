@@ -13,6 +13,7 @@ export interface Coupon {
   minimumAmount?: number;
   buyQuantity?: number;
   getQuantity?: number;
-  availableTime?: AvailableTime;
+  availableStartTime?: string;
+  availableEndTime?: string;
   isChecked: boolean;
 }
