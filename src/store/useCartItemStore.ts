@@ -6,7 +6,7 @@ interface CartItenStoreState {
   setCartItems: (cartItems: Items[] | null) => void;
 }
 
-const useCartItenStore = create<CartItenStoreState>(set => ({
+const useCartItemStore = create<CartItenStoreState>(set => ({
   cartItems: null,
   setCartItems: (cartItems: Items[] | null) => {
     const cartItemsWithSelection = cartItems?.map((item) => ({
@@ -15,14 +15,15 @@ const useCartItenStore = create<CartItenStoreState>(set => ({
     }))
     set({cartItems: cartItemsWithSelection })
   },
-  toggleItemSelection: (id: number) => {
+  toggleICartItem: (id: number) => {
     set((state) => ({
       cartItems: state.cartItems?.map((item) => 
         item.id === id ? {...item,  isSelected: !item.isSelected} : item,
       )
     }))
-  }
+  },
+  
 }))
 
 
-export default useCartItenStore;
+export default useCartItemStore;

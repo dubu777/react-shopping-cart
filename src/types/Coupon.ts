@@ -8,7 +8,7 @@ export interface Coupon {
   code: string;
   description: string;
   expirationDate: string;
-  discountType: string;
+  discountType: 'fixed' | 'freeShipping' | 'percentage';
   discount?: number;
   minimumAmount?: number;
   buyQuantity?: number;
