@@ -1,12 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Text from "../components/Text/Text";
+import IconButton from "../components/common/IconButton/IconButton";
 import { ThemeProvider } from "styled-components";
 import theme from "../styles/theme";
+import { fn } from "@storybook/test";
 
 
 const meta = {
-  title: "Buttons/Text",
-  component: Text,
+  title: "Buttons/IconButton",
+  component: IconButton,
   parameters: {
     layout: "centered",
   },
@@ -19,39 +20,31 @@ const meta = {
   ],
   tags: ["autodocs"],
   argTypes: {
-    children: { control: "text", description: "텍스트"},
-    type: { control: "select", description: "텍스트 타입"},
+    size: { control: "select", description: "아이콘 사이즈 선택"},
+    alt: { control: "text", description: "alt"},
+    iconPath: { control: "text", description: "icon path"},
   },
+  args: {
+    onClick: fn(),
+  }
 
-} satisfies Meta<typeof Text>;
+} satisfies Meta<typeof IconButton>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Title: Story = {
+export const Small: Story = {
   args: {
-    children: 'title',
-    type: 'title',
+    size: 'small',
+    alt: 'icon',
+    iconPath: 'https://matzip-s3-jh.s3.ap-northeast-2.amazonaws.com/original/ic-public-delete-dark.svg',
   },
 };
 
-export const SubTitle: Story = {
+export const Medium: Story = {
   args: {
-    children: 'subtitle',
-    type: 'subtitle',
-  },
-};
-
-export const Body: Story = {
-  args: {
-    children: 'body',
-    type: 'body',
-  },
-};
-
-export const Notification: Story = {
-  args: {
-    children: 'notification',
-    type: 'notification',
+    size: 'medium',
+    alt: 'icon',
+    iconPath: 'https://matzip-s3-jh.s3.ap-northeast-2.amazonaws.com/original/ic-public-delete-dark.svg',
   },
 };

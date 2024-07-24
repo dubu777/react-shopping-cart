@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
-import Header from "../components/common/Header/Header";
+import Footer from "../components/common/Footer/Footer";
 import { ThemeProvider } from "styled-components";
 import theme from "../styles/theme";
 
 const meta = {
-  title: "Buttons/Header",
-  component: Header,
+  title: "Buttons/Footer",
+  component: Footer,
   parameters: {
     layout: "centered",
   },
@@ -21,22 +21,20 @@ const meta = {
   ],
   tags: ["autodocs"],
   argTypes: {
-    showBackButton: { control: "boolean", description: "뒤로가기 버튼 여부" },
-    showTitle: { control: "boolean", description: "타이틀 여부" },
-    title: { control: "text", description: "타이틀 여부" },
+    children: { control: "text", description: "결제하기" },
+    isDisable: { control: "boolean", description: "isDisable" },
   },
   args: {
-    onBackButtonClick: fn(),
+    onClick: fn(),
   },
-} satisfies Meta<typeof Header>;
+} satisfies Meta<typeof Footer>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    showBackButton: true,
-    showTitle: true,
-    title: "SHOP",
+    children: '결제하기',
+    isDisable: false,
   },
 };

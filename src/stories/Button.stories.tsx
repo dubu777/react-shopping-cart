@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
-import Button from "../components/Button/Button";
-
+import Button from "../components/common/Button/Button";
+import { ThemeProvider } from "styled-components";
+import theme from "@/styles/theme";
 
 const meta = {
   title: "Buttons/Button",
@@ -12,31 +13,33 @@ const meta = {
   tags: ["autodocs"],
   decorators: [
     (Story) => (
-      <div style={{ width: "360px" }}>
-        <Story />
-      </div>
+      <ThemeProvider theme={theme}>
+        <div style={{ width: "360px" }}>
+          <Story />
+        </div>
+      </ThemeProvider>
     ),
   ],
   argTypes: {
-    theme: {
-      control: {
-        type: "select",
-        options: ["dark", "light", "social", "text"],
-      },
+    $buttonTheme: {
+      control: "select",
       description: "버튼 테마",
-      defaultValue: "dark",
     },
     children: {
       control: "text",
       description: "버튼 text",
       defaultValue: "icon",
     },
-    disabled: {
+    isDisable: {
       control: "boolean",
       description: "버튼 비활성화 여부",
       defaultValue: true,
     },
-    size: { control: "select", description: "버튼 크기", defaultValue: "medium"},
+    size: {
+      control: "select",
+      description: "버튼 크기",
+      defaultValue: "medium",
+    },
     onClick: { action: "clicked", description: "버튼 클릭 이벤트" },
   },
   args: {
@@ -49,46 +52,27 @@ type Story = StoryObj<typeof meta>;
 
 export const Dark: Story = {
   args: {
-    theme: "dark",
-    disabled: true,
+    $buttonTheme: "dark",
+    isDisable: false,
     children: "Button",
     size: "medium",
   },
 };
-
 
 export const Light: Story = {
   args: {
     children: "Button",
-    theme: "light",
-    disabled: false,
+    $buttonTheme: "light",
+    isDisable: false,
     size: "medium",
   },
 };
 
-export const Social: Story = {
+export const Gray: Story = {
   args: {
     children: "Button",
-    theme: "social",
-    disabled: false,
-    size: "medium",
-  },
-};
-
-export const Text: Story = {
-  args: {
-    children: "Button",
-    theme: "text",
-    disabled: false,
-    size: "medium",
-  },
-};
-
-export const Disabled: Story = {
-  args: {
-    children: "Button",
-    theme: "dark",
-    disabled: true,
+    $buttonTheme: "gray",
+    isDisable: false,
     size: "medium",
   },
 };

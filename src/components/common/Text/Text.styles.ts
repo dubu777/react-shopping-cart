@@ -7,8 +7,8 @@ const getTypeStyling = (type: Required<ITextProps>["type"]) => {
       font-size: ${({ theme }) => theme.fontSize.heading};
       font-weight: 700;
     `,
-    subtitle: css`
-      font-size: ${({ theme }) => theme.fontSize.body};
+    subTitle: css`
+      font-size: ${({ theme }) => theme.fontSize.subTitle};
       font-weight: 700;
     `,
     body: css`
@@ -25,4 +25,7 @@ const getTypeStyling = (type: Required<ITextProps>["type"]) => {
 
 export const StyledText = styled.p<ITextProps>`
   ${({type = 'body'}) => getTypeStyling(type)}
+  color: ${({ theme, color = 'dark' }) => theme.color[color]};
+  margin: ${prop => prop.$margin || '0'};
 `;
+

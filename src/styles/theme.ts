@@ -1,12 +1,13 @@
 
 const color = {
-  white: '#FFFFFF',
-  black: '#303030',
+  light: '#FFFFFF',
+  dark: '#303030',
   gray: '#838383',
 } as const;
 
 const fontSize = {
   heading: '24px',
+  subTitle: '18px',
   body: '16px',
   small: '10px',
 } as const;

@@ -5,6 +5,10 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -22,6 +26,7 @@
 
     /* Testing */
     "types": ["jest"],
+    "typeRoots": ["./node_modules/@types", "./src/types"],
     "esModuleInterop": true
   },
   "include": ["src"],

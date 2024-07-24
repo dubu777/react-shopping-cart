@@ -1,3 +1,4 @@
+import { BackArrowIcon } from "@/asset";
 import IconButton from "../IconButton/IconButton";
 import { Container, Title } from "./Header.styles";
 
@@ -19,7 +20,7 @@ export default function Header({
       {showBackButton && (
         <IconButton
           alt="back-arrow"
-          iconPath={`https://kr.object.ncloudstorage.com/icons/ic-back-arrow-white.svg`}
+          iconPath={BackArrowIcon}
           onClick={onBackButtonClick}
         />
       )}
