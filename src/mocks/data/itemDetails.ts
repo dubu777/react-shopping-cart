@@ -14,7 +14,7 @@ export const mockItemDetailsWithDeliveryFee: mockItemDetailsType[] =
     id: item.id,
     quantity: item.quantity,
     price: item.product.price,
-    isChecked: true,
+    isSelected: true,
   }));
 
 export const mockItemDetailsWithOutDeliveryFee: mockItemDetailsType[] =
@@ -22,5 +22,5 @@ export const mockItemDetailsWithOutDeliveryFee: mockItemDetailsType[] =
     id: item.id,
     quantity: item.quantity,
     price: item.product.price,
-    isChecked: true,
+    isSelected: true,
   }));

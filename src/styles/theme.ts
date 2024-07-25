@@ -8,7 +8,7 @@ const color = {
 const fontSize = {
   heading: '24px',
   subTitle: '18px',
-  body: '16px',
+  body: '13px',
   small: '10px',
 } as const;
 

@@ -1,20 +1,20 @@
-import { CheckedBox, NoneCheckedBox } from "../../../asset";
+import { CheckedBox, NoneCheckedBox } from "@/asset";
 import IconButton from "../IconButton/IconButton";
 import Text from "../Text/Text";
 import { Wrapper } from "./LabelCheckBox.styles";
 
 interface ILabelCheckBoxProps {
-  isChecked?: boolean;
+  isSelected?: boolean;
   size?: "small" | "medium";
   onClick: React.MouseEventHandler<HTMLButtonElement>;
-  children: string;
+  lableText?: string;
 }
 
 export default function LabelCheckBox({
-  isChecked = false,
+  isSelected = false,
   onClick,
   size = "medium",
-  children,
+  lableText,
 }: ILabelCheckBoxProps) {
   const textSize = {
     small: "body",
@@ -23,13 +23,13 @@ export default function LabelCheckBox({
   return (
     <Wrapper>
       <IconButton
-        iconPath={isChecked ? CheckedBox : NoneCheckedBox}
+        iconPath={isSelected ? CheckedBox : NoneCheckedBox}
         alt="checkBox"
         onClick={onClick}
         size={size}
       />
-      {children &&
-        <Text type={textSize[size]}>{children}</Text>
+      {lableText &&
+        <Text type={textSize[size]}>{lableText}</Text>
       }
     </Wrapper>
   );

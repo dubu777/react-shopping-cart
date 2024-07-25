@@ -1,19 +1,20 @@
 import styled, { css } from "styled-components";
 import { ButtonSize, ButtonTheme, IButtonProps } from "./Button";
 
-const getSizeStyling = (size: ButtonSize) => {
+const getSizeStyling = (size: ButtonSize, $buttonTheme: ButtonTheme) => {
   const sizeStyles = {
     small: css`
       height: 18px;
       font-size: ${({ theme }) => theme.fontSize.small};
-      padding: 0 4px;
+      padding: ${$buttonTheme === "text" ? "0" : "0 4px"};
       border-radius: 3px;
     `,
     medium: css`
-      height: 30px;
-      width: 100%;
-      font-size: ${({ theme }) => theme.fontSize.small};
-      border-radius: 8px;
+      height: 24px;
+      padding: 0 10px;
+      font-size: ${({ theme }) => theme.fontSize.body};
+      padding: ${$buttonTheme === "text" ? "0" : "0 6px"};
+      border-radius: 3px;
     `,
     large: css`
       height: 50px;
@@ -51,16 +52,16 @@ const getThemeStyling = ($buttonTheme: ButtonTheme) => {
   return themeStyles[$buttonTheme] || themeStyles.dark;
 };
 
-
 export const Button = styled.button<IButtonProps>`
-  ${({size = 'medium'}) => getSizeStyling(size)};
-  ${({$buttonTheme = 'dark'}) => getThemeStyling($buttonTheme)};
+  ${({ size = "medium", $buttonTheme = "dark" }) =>
+    getSizeStyling(size, $buttonTheme)};
+  ${({ $buttonTheme = "dark" }) => getThemeStyling($buttonTheme)};
+  display: flex;
+  align-items: center;
+  justify-content: center;
   &:disabled {
     background-color: ${({ theme }) => theme.color.gray};
     cursor: not-allowed;
     opacity: 0.5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 `;

@@ -22,9 +22,9 @@ const meta = {
   ],
   tags: ["autodocs"],
   argTypes: {
-    isChecked: { control: "boolean", description: "선택 여부"},
+    isSelected: { control: "boolean", description: "선택 여부"},
     size: { control: "select", description: "사이즈"},
-    children: { control: "text", description: "텍스트"},
+    lableText: { control: "text", description: "텍스트"},
   },
   args: {
     onClick: fn(),
@@ -37,16 +37,16 @@ type Story = StoryObj<typeof meta>;
 
 export const Small: Story = {
   args: {
-    isChecked: false,
+    isSelected: false,
     size: 'medium',
-    children: '선택',
+    lableText: '선택',
   },
 };
 
 export const Medium: Story = {
   args: {
-    isChecked: false,
+    isSelected: false,
     size: 'small',
-    children: '선택',
+    lableText: '선택',
   },
 };

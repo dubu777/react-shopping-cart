@@ -16,7 +16,7 @@ export const useCouponStore = create<CouponStoreState>((set, get) => ({
   toggleCoupon: (id: number) => {
     set((state) => ({
       coupons: state.coupons?.map((coupon) =>
-        coupon.id === id ? { ...coupon, isChecked: !coupon.isChecked } : coupon
+        coupon.id === id ? { ...coupon, isSelected: !coupon.isSelected } : coupon
       ),
     }));
   },
@@ -48,7 +48,7 @@ export const useCouponStore = create<CouponStoreState>((set, get) => ({
   },
   getCheckedCount: () => {
     return get().coupons?.reduce(
-      (count, coupon) => (coupon.isChecked ? count + 1 : count),
+      (count, coupon) => (coupon.isSelected ? count + 1 : count),
       0
     );
   },

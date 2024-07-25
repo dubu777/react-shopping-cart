@@ -5,12 +5,14 @@ import useGetCartItems from "@/api/queries/useGetCartItems";
 import { useEffect } from "react";
 import Header from "../../common/Header/Header";
 import * as S from "./CartContent.styles";
-import LabelCheckBox from "../../common/LabelCheckBox/LabelCheckBox";
-import Button from "@/components/common/Button/Button";
+import Divider from "@/components/common/Divider/Divider";
+import ItemList from "../ItemList/ItemList";
+import ItemCheckBox from "../ItemCheckBox/ItemCheckBox";
 
 export default function CartContent() {
   const { data } = useGetCartItems();
-  const { cartItems, setCartItems } = useCartItemStore();
+  const { cartItems, setCartItems, toggleIAllCartItem, deleteSelectedCartItem } = useCartItemStore();
+  const allSelected = cartItems?.every((item) => item.isSelected) || false;
 
   useEffect(() => {
     data && setCartItems(data);
@@ -24,17 +26,26 @@ export default function CartContent() {
       <S.CartContentContainer>
         {cartItems ? (
           <>
-          <S.TitleWrapper>
-            <Text type="title" $margin="0 0 10px 0">{messages.CART_TITLE}</Text>
-            <Text type="body">
-              {messageProps.includedItme(cartItems?.length)}
-            </Text>
-          </S.TitleWrapper>
-          <S.CheckBoxWrapper>
-            <LabelCheckBox onClick={() => {}} size="small">{messages.ALL_CHECK}</LabelCheckBox>
-            <Button onClick={() => {}} $buttonTheme="text" size="small">선택삭제</Button>
-            </S.CheckBoxWrapper>
-
+            <S.TitleWrapper>
+              <Text type="title" $margin="0 0 10px 0">
+                {messages.CART_TITLE}
+              </Text>
+              <Text type="body">
+                {messageProps.includedItme(cartItems?.length)}
+              </Text>
+            </S.TitleWrapper>
+            <ItemCheckBox
+              showButton={true}
+              buttonText={messages.SELECTED_DELETE}
+              onCheckBoxClick={toggleIAllCartItem}
+              onButtonClick={deleteSelectedCartItem}
+              buttonTheme="text"
+              labelText={messages.ALL_CHECK}
+              isSelected={allSelected}
+            />
+            <Divider />
+            <ItemList cartItems={cartItems} />
+            <Text $margin="20px 0">{messages.FREE_SHIPPING_FEE}</Text>
           </>
         ) : (
           <>

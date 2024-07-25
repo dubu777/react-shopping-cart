@@ -3,7 +3,7 @@ import { Coupon } from "../types/Coupon";
 import { Items } from "../types/Item";
 import useDiscountCalculator from "./useDiscountCalculator";
 
-// 훅에 파라미터로 isSelected된 아이템과 isChecked 된 쿠폰을 보내줘야함
+// 훅에 파라미터로 isSelected된 아이템과 isSelected 된 쿠폰을 보내줘야함
 function useOrderCalculator(orderItems: Items[], selectCoupons: Coupon[]) {
   const { calculateDiscountAmount } = useDiscountCalculator();
 

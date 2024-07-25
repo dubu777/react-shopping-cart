@@ -23,6 +23,12 @@ const getSizeStyling = (size: Required<IIconButtonProps>["size"]) => {
   return sizeStyles[size] || sizeStyles.medium;
 };
 
-export const Img = styled.img<{ size: Required<IIconButtonProps>["size"] }>`
+export const ImgWrapper = styled.div<{ size: Required<IIconButtonProps>["size"] }>`
   ${({ size = "medium" }) => getSizeStyling(size)}
+`;
+
+export const Img = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
