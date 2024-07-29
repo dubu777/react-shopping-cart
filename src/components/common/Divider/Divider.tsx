@@ -1,4 +1,5 @@
-import * as S from "./Divider.styles";
+import { StyledDivider } from "./Divider.styles";
+
 
 export interface IDividerProps {
   size?: 'small' | 'medium';
@@ -6,5 +7,5 @@ export interface IDividerProps {
 }
 
 export default function Divider({size = 'small', $color = 'dark'}: IDividerProps) {
-  return <S.Divider size={size} $color={$color}/>;
+  return <StyledDivider size={size} $color={$color}/>;
 }

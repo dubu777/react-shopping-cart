@@ -70,6 +70,8 @@ const ResetStyle = createGlobalStyle`
     min-height: 100vh;
     text-rendering: optimizeSpeed;
     line-height: 1.5;
+    width: 100vw;
+		height: 100vh;
   }
 
   #root {

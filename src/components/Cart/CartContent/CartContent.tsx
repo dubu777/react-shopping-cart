@@ -8,22 +8,36 @@ import * as S from "./CartContent.styles";
 import Divider from "@/components/common/Divider/Divider";
 import ItemList from "../ItemList/ItemList";
 import ItemCheckBox from "../ItemCheckBox/ItemCheckBox";
+import TotalAmount from "@/components/common/TotalAmount/TotalAmount";
+import Footer from "@/components/common/Footer/Footer";
+import { useNavigate } from "react-router-dom";
+import { mainPath } from "@/constants";
 
 export default function CartContent() {
   const { data } = useGetCartItems();
-  const { cartItems, setCartItems, toggleIAllCartItem, deleteSelectedCartItem } = useCartItemStore();
+  const {
+    cartItems,
+    setCartItems,
+    toggleIAllCartItem,
+    deleteSelectedCartItem,
+    selectedItems,
+  } = useCartItemStore();
   const allSelected = cartItems?.every((item) => item.isSelected) || false;
+  const navigate = useNavigate();
+  const handleOrderCheck = () => {
+    navigate(mainPath.ORDER, { state: {selectedItems} });
+  };
 
   useEffect(() => {
     data && setCartItems(data);
   }, [data]);
-  console.log(data, "서버 데이터 불러오기");
-  console.log(cartItems, "주스탠드 cartItem");
+console.log(selectedItems, '선택 아이템');
+
 
   return (
     <>
       <Header title="SHOP" showTitle={true} showBackButton={true} />
-      <S.CartContentContainer>
+      <S.ContentContainer>
         {cartItems ? (
           <>
             <S.TitleWrapper>
@@ -44,8 +58,8 @@ export default function CartContent() {
               isSelected={allSelected}
             />
             <Divider />
-            <ItemList cartItems={cartItems} />
-            <Text $margin="20px 0">{messages.FREE_SHIPPING_FEE}</Text>
+            <ItemList cartItems={cartItems} type="cart"/>
+            <TotalAmount type="cart" selectedItems={selectedItems} />
           </>
         ) : (
           <>
@@ -53,7 +67,8 @@ export default function CartContent() {
             <Text type="body">장바구니가 비었어요</Text>
           </>
         )}
-      </S.CartContentContainer>
+      </S.ContentContainer>
+      <Footer onClick={handleOrderCheck} isDisable={selectedItems.length <= 0}>주문확인</Footer>
     </>
   );
 }

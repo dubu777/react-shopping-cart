@@ -2,7 +2,7 @@ import { StyledText } from "./Text.styles";
 
 export interface ITextProps {
   type?: 'title' | 'subTitle' | 'body' | 'notification';
-  children: string | number;
+  children: React.ReactNode
   color?: 'dark' | 'light' | 'gray';
   $margin?: string;
 }

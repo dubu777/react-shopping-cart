@@ -7,6 +7,8 @@ function useDiscountCalculator() {
   };
 
   const calculatePercentageDisCount = (coupon: Coupon, totalAmount: number) => {
+    console.log(totalAmount, 'discount in totalamount');
+    
     return Math.floor((totalAmount * (coupon.discount ?? 0)) / 100);
   };
 

@@ -1,10 +1,12 @@
 import styled from "styled-components";
 
-export const CartContentContainer = styled.div`
-  margin-top: 60px;
-  height: 100vh;
+export const ContentContainer = styled.div`
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   width: 100%;
-  padding: 15px 25px;
+  padding: 25px 20px;
 `;
 
 export const TitleWrapper = styled.div`

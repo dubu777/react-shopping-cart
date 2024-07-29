@@ -4,31 +4,38 @@ import { Items } from "../types/Item";
 import useDiscountCalculator from "./useDiscountCalculator";
 
 // 훅에 파라미터로 isSelected된 아이템과 isSelected 된 쿠폰을 보내줘야함
-function useOrderCalculator(orderItems: Items[], selectCoupons: Coupon[]) {
+function useOrderCalculator(selectedItems: Items[], selectCoupons: Coupon[]) {
   const { calculateDiscountAmount } = useDiscountCalculator();
 
+  // 주문 금액
   const calculateTotalAmount = () => {
-    return orderItems.reduce(
+    return selectedItems.reduce(
       (total, item) => total + item.product.price * item.quantity,
       0
     );
   };
 
+  // 쿠폰 할인 금액
   const calculateTotalDiscount = () => {
     const totalAmount = calculateTotalAmount();
     const totalDiscount = selectCoupons.reduce(
       (total, coupon) => total + calculateDiscountAmount(coupon, totalAmount),
       0
     );
+    
 
     return totalDiscount;
   };
 
+  // 배송비
   const calculateShippingFee = () => {
-    return numbers.SHIPPING_FEE;
+    const totalAmount = calculateTotalAmount();
+    
+    return totalAmount >= 50000 ? 0 : numbers.SHIPPING_FEE;
   };
 
-  const calculateFinalAmount = () => {
+  // 할인을 적용한 최종 결제 금액
+  const calculateFinalAmountWithDiscount = () => {
     const totalAmount = calculateTotalAmount();
     const totalDiscount = calculateTotalDiscount();
     const shippingFee = calculateShippingFee();
@@ -37,12 +44,21 @@ function useOrderCalculator(orderItems: Items[], selectCoupons: Coupon[]) {
     return finalAmount < 0 ? 0 : finalAmount;
   };
 
+  const calculateFinalAmount = () => {
+    const totalAmount = calculateTotalAmount();
+    const shippingFee = calculateShippingFee();
+    return totalAmount + shippingFee;
+  }
+
+
   return {
-    calculateFinalAmount,
+    calculateFinalAmountWithDiscount,
     calculateShippingFee,
     calculateTotalAmount,
     calculateTotalDiscount,
+    calculateFinalAmount,
   };
 }
+
 
 export { useOrderCalculator };

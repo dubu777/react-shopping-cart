@@ -5,5 +5,8 @@ const queryKey = {
   GET_COUPON: 'getCoupon',
 } as const 
 
+const localStorageKey = {
+  SELECTED_ITEMS: 'selectedItmes'
+} as const
 
-export {queryKey}
+export {queryKey, localStorageKey}

@@ -1,5 +1,7 @@
+import OrderContent from "@/components/Order/OrderContent/OrderContent";
+
 export default function Order() {
   return (
-    <h1>주문확인</h1>
+    <OrderContent/>
   )
 }

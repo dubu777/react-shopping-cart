@@ -24,7 +24,8 @@ const getColorStyling = ($color: Required<IDividerProps>["$color"]) => {
   return colorStyles[$color] || colorStyles.dark;
 };
 
-export const Divider = styled.div<IDividerProps>`
+export const StyledDivider = styled.div<IDividerProps>`
   ${({size = 'small'}) => getSizeStyling(size)}
   ${({$color = 'dark'}) => getColorStyling($color)}
+  width: 100%;
 `;

@@ -5,7 +5,7 @@ export type ButtonSize = "small" | "medium" | "large";
 
 export interface IButtonProps {
   $buttonTheme: ButtonTheme;
-  children: string;
+  children: React.ReactNode;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
   isDisable?: boolean;
   size?: ButtonSize;

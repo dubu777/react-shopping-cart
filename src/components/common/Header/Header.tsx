@@ -5,7 +5,7 @@ import { Container, Title } from "./Header.styles";
 interface IHeaderProps {
   showTitle: boolean;
   showBackButton: boolean;
-  title: string;
+  title?: string;
   onBackButtonClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
